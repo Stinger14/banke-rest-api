@@ -1,0 +1,6 @@
+### Crear sucursal
+POST http://localhost:4000/api/sucursales
+
+### Listar sucursales
+GET http://localhost:4000/api/sucursales
+

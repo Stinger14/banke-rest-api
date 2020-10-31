@@ -3,7 +3,7 @@ import { sequelize } from '../../database/db';
 
 const Solicitud = require('../pre/epresolm')
 
-const Relacionado = sequelize.define('relacionado', {
+const Relacionado = sequelize.define("xadmrelm", {
     admrel_numid: { type: Sequelize.INTEGER, primaryKey: true},
     admrel_clase: {type: Sequelize.CHAR(1)},
     admtid_numid: { type: Sequelize.INTEGER},
@@ -17,10 +17,8 @@ const Relacionado = sequelize.define('relacionado', {
     admrel_Sexo: { type: Sequelize.CHAR(1)},
     admsts_codigo: { type: Sequelize.INTEGER},
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
-
-Relacionado.hasMany(Solicitud, { foreignKey: 'admrel_numid', sourceKey: 'presol_numid'});
-Solicitud.belongsTo(Relacionado, { foreignKey: 'admrel_numid', sourceKey: 'presol_numid'});
 
 export default Relacionado;

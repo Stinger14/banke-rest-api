@@ -14,9 +14,9 @@ app.use(morgan('dev')); // Show requests on console (debug)
 app.use(json());    // Understand json requests
 
 // Routes
-app.use('/api/xadmsucm', sucursalRoutes);
-app.use('/api/xadmsucm', relacionadoRoutes);
-app.use('/api/xadmsucm', solicitudRoutes);
+app.use('/api/sucursal', sucursalRoutes);
+app.use('/api/relacionados', relacionadoRoutes);
+app.use('/api/solicitudes', solicitudRoutes);
 
 
 export default app;

@@ -100,7 +100,7 @@ export async function updateSucursal(req, res) {
     let sucursal = await Sucursal.findAll({
       attributes: ["admsuc_numid", "admcia_numid", "admsuc_nombre"],
       where: {
-        adm_numid,
+        admsuc_numid,
       }
     });
     if (sucursal.length > 0) {
@@ -109,10 +109,15 @@ export async function updateSucursal(req, res) {
                     admcia_numid,
                     admsuc_nombre
             });
+            return res.json({
+                data: sucursal,
+                message: "Sucursal actualizada."
+            });
         });
-        sucursal.save();
+        // sucursal.save();
     }
   } catch (e) {
+    console.log(e);
     res.status(500).json({
       message: "Error interno. Inténtatlo más tarde.",
     });

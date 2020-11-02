@@ -21,19 +21,19 @@ export async function getSucursales(req, res) {
 export async function createSucursales(req, res) {
   // console.log(req.body);
   const {
+    admsuc_numid,
     admcia_numid,
-    admsuc_codigo,
     admsuc_nombre,
-    admsts_codigo,
   } = req.body;
   try {
-    let newSucursal = await Sucursal.create(
+    const newSucursal = await Sucursal.create(
       {
+        admsuc_numid,
         admcia_numid,
         admsuc_nombre,
       },
       {
-        fields: ["admcia_numid", "admsuc_nombre"],
+        fields: ["admsuc_numid", "admcia_numid", "admsuc_nombre"],
       }
     );
     // If success
@@ -95,7 +95,7 @@ export async function deleteSucursal(req, res) {
 export async function updateSucursal(req, res) {
   try {
     const { admsuc_numid } = req.params;
-    const { admcia_numid, admsuc_nombre } = req.body;
+    const { admsuc_nombre, admcia_numid } = req.body;
 
     let sucursal = await Sucursal.findAll({
       attributes: ["admsuc_numid", "admcia_numid", "admsuc_nombre"],
@@ -106,7 +106,7 @@ export async function updateSucursal(req, res) {
     if (sucursal.length > 0) {
         sucursal.forEach(async sucursal => {
             sucursal.update({
-                    admcia_numid,
+                    admsuc_numid,
                     admsuc_nombre
             });
             return res.json({
@@ -123,3 +123,4 @@ export async function updateSucursal(req, res) {
     });
   }
 }
+

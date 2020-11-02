@@ -12,7 +12,7 @@ const Sucursal = sequelize.define("xadmsucm", {
     freezeTableName: true
 });
 
-Sucursal.hasMany(Solicitud, { foreignKey: "admcia_numid", sourceKey: "admsuc_numid"});
+Sucursal.hasMany(Solicitud, { foreignKey: "admsuc_numid", sourceKey: "admsuc_numid"});
 Solicitud.belongsTo(Sucursal, { foreignKey: "admsuc_numid", sourceKey: "admsuc_numid"});
 
 // Sucursal.schema("bag");

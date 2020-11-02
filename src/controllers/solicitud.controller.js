@@ -264,5 +264,40 @@ export async function updateSolicitud(req, res) {
 }
 
 export async function getSolicitudBySucursal(req, res) {
-  
+  const { admsuc_numid } = req.params;
+  const solicitudes = await Solicitud.findAll({
+    attributes: [
+          "presol_numid",
+          "admrel_numid",
+          "admsuc_numid",
+          "presol_numdoc",
+          "prefre_numid",
+          "presol_issegurado",
+          "presol_isseguradovida",
+          "presol_tiempoactividad",
+          "presol_condmorales",
+          "presol_habadm",
+          "presol_manobra",
+          "presol_laboriosidad",
+          "presol_isasistencia",
+          "presol_instasistencia",
+          "presol_respropiedad",
+          "presol_trabaja",
+          "presol_representante",
+          "presol_asalariado",
+          "presol_partbeneficio",
+          "admmon_numid",
+          "presol_montosolicitado",
+          "presol_plazo",
+          "presol_tasaint",
+          "presol_tasamora",
+          "presol_ismultiple",
+          "presol_indfinanciera",
+          "presol_indcapacidadpa",
+          "presol_comentario",
+          "admsts_numid"
+    ],
+    where: {admsuc_numid}
+  });
+  res.json({solicitudes})
 }

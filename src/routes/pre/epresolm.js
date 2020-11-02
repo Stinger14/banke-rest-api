@@ -1,17 +1,19 @@
 import { Router} from 'express';
-import { createSolicitudes, getSolicitud, getSolicitudes, deleteSolicitud, updateSolicitud } from '../../controllers/solicitud.controller';
+import { createSolicitudes, getSolicitud, getSolicitudes, deleteSolicitud, updateSolicitud, getSolicitudBySucursal } from '../../controllers/solicitud.controller';
 
 const router = Router();
 
-// /api/sucursales
+// /api/solicitudes
 router.get('/', getSolicitudes);
-// /api/sucursales
+// /api/solicitudes
 router.post('/', createSolicitudes);
-// /api/sucursales/:admsuc_numid
+// /api/solicitudes/:admsuc_numid
 router.get('/:presol_numid', getSolicitud);
-// /api/sucursales/:admsuc_numid
+// /api/solicitudes/:admsuc_numid
 router.delete('/:presol_numid', deleteSolicitud);
-// /api/sucursales/:admsuc_numid
+// /api/solicitudes/:admsuc_numid
 router.put('/:presol_numid', updateSolicitud);
+// /api/solicitudes/sucursales/:presol_numid
+router.get('/sucursales/:admsuc_numid', getSolicitudBySucursal);
 
 export default router;

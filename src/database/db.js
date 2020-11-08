@@ -1,40 +1,17 @@
-import Sequelize from 'sequelize';
-// const { Pool } = require("pg");
+const { Pool } = require("pg");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const isProduction = process.env.NODE_ENV === "production";
 
-// const connString = `postgresql://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`
+// const connString = `postgresql://postgres:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`
+const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`
 
-// const pool = new Pool({
-//   connString: isProduction? process.env.DATABASE_URL : connString
-// });
+// Create alternative connection string.
+const pool = new Pool({
+  connectionString: connectionString
+});
 
-// module.exports = { pool };
+console.log("\n ==========> Conection string successful. <===========\n")
 
-export const sequelize = new Sequelize(
-    process.env.DB_DATABASE,
-    process.env.DB_USER,
-    process.env.DB_PASS,
-    {
-        host: process.env.DB_HOST,
-        dialect: 'postgres',
-        pool: {
-            max: 5,
-            min: 0,
-            require: 30000,
-            idle: 10000
-        },
-        logging: false
-    }
-)
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+module.exports = { pool };

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { sequelize } = require('../../database/db');
+const { sequelize } = require('../../database/db2');
 
 const Solicitud = sequelize.define("epresolm", {
     presol_numid: { type: Sequelize.INTEGER, primaryKey: true},

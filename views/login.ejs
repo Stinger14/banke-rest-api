@@ -3,14 +3,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" integrity="sha512-5fsy+3xG8N/1PV5MIJz9ZsWpkltijBI48gBzQ/Z2eVATePGHOkMIn+xTDHIfTZFVb9GMpflF2wOWItqxAP2oLQ==" crossorigin="anonymous" />
+    <style>
+        body {background-color: burlywood;}
+    </style>
     <title>API Login</title>
 </head>
 <body>
     <h1>Login</h1>
 
+    <ul>
+        <% if (messages.success_msg) { %>
+            <li><%= messages.success_msg %></li>
+            <% } %>
+    </ul>
+
     <form action="/users/login" method="POST">
         <div>
-            <input 
+            <input
+            style="background-color:cornsilk" 
             type="text" 
             name="username" 
             id="username" 
@@ -18,6 +28,7 @@
         </div>
         <div>
             <input 
+            style="background-color:cornsilk"
             type="email" 
             name="email" 
             id="email" 
@@ -25,15 +36,16 @@
         </div>
         <div>
             <input 
+            style="background-color:cornsilk"
             type="password" 
             name="password" 
             id="password" 
             placeholder="Password" required>
         </div>
         <div>
-            <input type="submit" value="Login" />
+            <input type="submit" style="background-color:cornsilk" value="Login" />
         </div>
-        <a href="/users/register"> Regístrate</a>
+        <a href="/users/register" style="color:cadetblue" > Regístrate</a>
     </form>
 </body>
 </html>

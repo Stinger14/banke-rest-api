@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import { sequelize } from '../../database/db';
+import { sequelize } from '../../database/db2';
 
 const Solicitud = require('../pre/epresolm')
 

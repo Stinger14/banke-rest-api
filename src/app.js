@@ -2,23 +2,30 @@ import express, { json, Router } from "express";
 import morgan from "morgan";
 import { pool } from './database/db_string';
 
-
 // Importing routes
 import sucursalRoutes from "./routes/adm/xadmsucm";
 import relacionadoRoutes from "./routes/adm/xadmrelm";
 import solicitudRoutes from "./routes/pre/epresolm";
 
+// App requires
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
 const passport = require("passport");
+const debug = require("debug")("users-middleware")
 
-const initializePassport = require("./passportConfig");
-
-initializePassport(passport);
+// Load enviroment variables from .env
+require('dotenv').config();
 
 // App init
 const app = express();
+
+// set app to production settings
+process.env.NODE_ENV === 'production';
+
+// Init session and webcookies
+const initializePassport = require("./passportConfig");
+initializePassport(passport);
 
 // Middlewares
 app.use(morgan("dev")); // Show requests on console (debug)
@@ -30,7 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(session({
     secret: 'secret',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false
     })
 );
 
@@ -60,6 +67,7 @@ app.get("/users/dashboard", checkNotAuthenticated, (req, res) => {
 app.get("/users/logout", (req, res) => {
     req.logout();
     req.flash("success_msg", "Se ha cerrado la sesión.");
+    debug('Session closed for user: ' + req.user.username)
     res.redirect("/users/login");
 })
 

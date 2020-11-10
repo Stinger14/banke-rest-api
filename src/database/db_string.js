@@ -9,7 +9,7 @@ const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_P
 
 // Create alternative connection string.
 const pool = new Pool({
-  connectionString: connectionString
+  connectionString: isProduction? process.env.DATABASE_URL : connectionString
 });
 
 console.log("\n ==========> Conection string successful. <===========\n")

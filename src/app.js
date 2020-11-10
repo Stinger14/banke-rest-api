@@ -12,7 +12,9 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
 const passport = require("passport");
-const debug = require("debug")("users-middleware")
+const debug_users = require("debug")("users-middleware")
+const compression = require("compression");
+const helmet = require('helmet');
 
 // Load enviroment variables from .env
 require('dotenv').config();
@@ -28,6 +30,12 @@ const initializePassport = require("./passportConfig");
 initializePassport(passport);
 
 // Middlewares
+
+// set appropriate HTTP headers 
+//that help protect your app 
+//from well-known web vulnerabilities.
+app.use(helmet());
+
 app.use(morgan("dev")); // Show requests on console (debug)
 app.use(json()); // Understand json requests
 
@@ -45,6 +53,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(flash());
+
+app.use(compression());
 
 // API users routes.
 app.get("/", (req, res) => {
@@ -67,7 +77,7 @@ app.get("/users/dashboard", checkNotAuthenticated, (req, res) => {
 app.get("/users/logout", (req, res) => {
     req.logout();
     req.flash("success_msg", "Se ha cerrado la sesión.");
-    debug('Session closed for user: ' + req.user.username)
+    debug_users('Session closed for user');
     res.redirect("/users/login");
 })
 
@@ -75,6 +85,7 @@ app.post("/users/register", async (req, res) => {
   try {
     let { username, email, password, password2 } = req.body;
     let errors = [];
+    var tries = 0; 
 
     console.log({
       username,
@@ -92,22 +103,23 @@ app.post("/users/register", async (req, res) => {
     }
 
     if (password !== password2) {
-        res.sendStatus(404);
-        errors.push({ message: "Contreseñas no coinciden." });
+      tries =+ 1; 
+      errors.push({ message: "Contreseñas no coinciden." });
+      debug_users("Passwords not match try count: " + tries)
     }
 
     if (errors.length > 0) {
       res.render("register", { errors, username, email, password, password2 });
     } else {
         let hashedPassword = await bcrypt.hash(password, 10);
-        console.log(hashedPassword);
+        debug_users("HashedPassword: " + hashedPassword)
 
         pool.query(
             `SELECT * FROM users WHERE email = $1`,
              [email], 
              (err, results) => {
                 if (err) { throw err; }
-                console.log(results.rows);
+                debug_users("User: " + results.rows);
 
                 if (results.rows.length > 0) {
                     errors.push({
@@ -125,7 +137,7 @@ app.post("/users/register", async (req, res) => {
                             if (err) {
                                 throw err;
                             }
-                        console.log(results.rows);
+                        debug_users("User: " + results.rows);
                         req.flash('success_msg', "Registado exitosamente.")
                         res.redirect("/users/login");
                         }
@@ -163,6 +175,7 @@ function checkNotAuthenticated(req, res, next) {
         return next();
     }
     req.flash("success_msg", "No estás autorizado, favor de acceder.")
+    debug_users("Unauthorize access request.");
     return res.redirect("/users/login");
 }
 

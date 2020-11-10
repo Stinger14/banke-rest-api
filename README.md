@@ -1,10 +1,10 @@
 # API BAGRICOLA
 
-### Este proyecto publica un servicio web que sirve de interfaz para el consumo de datos del Banco Agrícola de la República Dominicana.
+Este proyecto publica un servicio web que sirve de interfaz para el consumo de datos del Banco Agrícola de la República Dominicana.
 <br>
 ----
 
-## Prerrequisitos
+### Prerrequisitos
 
 - Servidor Linux con un usuario con privilegios de administrador aparte del usuario root.
 - Un nombre de dominio que apunte a la dirección pública del servidor.

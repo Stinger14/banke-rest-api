@@ -12,3 +12,16 @@ GET http://localhost:3000/api/sucursales
 
 
 # <-------------USUARIOS----------------------->
+### Listar usuarios
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "username": "testuser3",
+    "email": "testuser3@testuser.com",
+    "password": "testpass3",
+    "password2": "testpass3"
+}
+
+### Listar usuario
+GET http://localhost:3000/users/register

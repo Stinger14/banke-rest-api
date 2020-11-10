@@ -17,15 +17,13 @@
             <% } %>
     </ul>
 
+    <ul>
+        <% if (messages.error) { %>
+            <li><%= messages.error %></li>
+        <% } %>
+    </ul>
+
     <form action="/users/login" method="POST">
-        <div>
-            <input
-            style="background-color:cornsilk" 
-            type="text" 
-            name="username" 
-            id="username" 
-            placeholder="Username" required>
-        </div>
         <div>
             <input 
             style="background-color:cornsilk"

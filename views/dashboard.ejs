@@ -11,7 +11,7 @@
 <body>
     <a href="/users/logout">Logout</a>
     <h1>
-        Hello <%= user %>
+        Hello <%= user.charAt(0).toUpperCase() + user.slice(1) %>
     </h1>
 </body>
 </html>

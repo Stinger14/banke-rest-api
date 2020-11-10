@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import { sequelize } from '../../database/db2';
+import { sequelize } from '../../database/db_sequelize';
 
 import Solicitud from '../pre/epresolm'
 

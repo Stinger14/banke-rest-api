@@ -116,7 +116,7 @@ app.post("/users/register", async (req, res) => {
 
         pool.query(
             `SELECT * FROM users WHERE email = $1`,
-             [email], 
+             [email],
              (err, results) => {
                 if (err) { throw err; }
                 debug_users("User: " + results.rows);

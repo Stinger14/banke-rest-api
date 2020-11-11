@@ -1,4 +1,5 @@
 import { Router} from 'express';
+import "@babel/polyfill"
 import { createSucursales, getSucursales, getSucursal, deleteSucursal, updateSucursal } from '../../controllers/sucursal.controller';
 
 const router = Router();

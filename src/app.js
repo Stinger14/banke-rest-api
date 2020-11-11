@@ -12,7 +12,7 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
 const passport = require("passport");
-const debug_users = require("debug")("users-middleware")
+// const debug_users = require("debug")("users-middleware")
 const compression = require("compression");
 const helmet = require('helmet');
 

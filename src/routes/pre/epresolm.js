@@ -1,4 +1,5 @@
 import { Router} from 'express';
+import "@babel/polyfill"
 import { createSolicitudes, getSolicitud, getSolicitudes, deleteSolicitud, updateSolicitud, getSolicitudBySucursal } from '../../controllers/solicitud.controller';
 
 const router = Router();

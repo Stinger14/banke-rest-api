@@ -1,7 +1,6 @@
 import Sequelize from 'sequelize';
 // require('dotenv').config();
 
-<<<<<<< HEAD
 // conn string
 //`postgres://process.env.DB_USER:process.env.DB_PASS@process.env.DB_HOST:process.env.DB_PORT/process.env.DB_DATABASE`
 
@@ -16,9 +15,6 @@ export const sequelize = new Sequelize(
      },
      logging: false
    });
-=======
-export const sequelize = new Sequelize(`postgres://process.env.DB_USER:process.env.DB_PASS@process.env.DB_HOST:process.env.DB_PORT/process.env.DB_DATABASE`);
->>>>>>> ff608c8d9d921883269ef83e74854fdd22de27a1
 
 // export const sequelize = new Sequelize(
 //   "postgres://postgres:Maxsteel2!@localhost:5432/banke", {

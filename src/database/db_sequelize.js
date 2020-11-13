@@ -28,11 +28,11 @@ export const sequelize = new Sequelize(
 //      logging: false
 //    });
 
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log("\n ==========> Conection via Sequelize successful. <===========\n");
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//   });
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("\n ==========> Conection via Sequelize successful. <===========\n");
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });

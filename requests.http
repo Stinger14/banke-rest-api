@@ -1,20 +1,23 @@
-# <-------------SUCURSALES----------------------->
+# <-------------SUCURSALES------------------------------->
 
 ### Crear sucursal
-POST http://localhost:3000/api/sucursales
+POST http://localhost:4000/api/sucursales
 
 ### Listar sucursales
-GET http://localhost:3000/api/sucursales
+GET http://localhost:4000/api/sucursales
+
+### Listar sucursal
+GET http://localhost:4000/api/sucursales/1
 
 
-# <-------------SOLICITUDES----------------------->
+# <-------------SOLICITUDES------------------------------>
 
 ### Listar solicitudes
 GET http://localhost:4000/api/solicitudes
 
-# <-------------USUARIOS----------------------->
+# <-------------USUARIOS----------------------------------->
 ### Listar usuarios
-POST http://localhost:3000/users/register
+POST http://localhost:4000/users/register
 Content-Type: application/json
 
 {
@@ -25,4 +28,4 @@ Content-Type: application/json
 }
 
 ### Listar usuario
-GET http://localhost:3000/users/register
+GET http://localhost:4000/users/register

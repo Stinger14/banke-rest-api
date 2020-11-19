@@ -16,18 +16,6 @@ export const sequelize = new Sequelize(
      logging: false
    });
 
-// export const sequelize = new Sequelize(
-//   "postgres://postgres:Maxsteel2!@localhost:5432/banke", {
-//      host:"localhost",
-//      dialect:'postgres',
-//      pool:{
-//            max:5,
-//            min:0,
-//            idle:10000
-//      },
-//      logging: false
-//    });
-
 sequelize
   .authenticate()
   .then(() => {

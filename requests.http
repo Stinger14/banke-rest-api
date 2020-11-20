@@ -1,4 +1,5 @@
-# <-------------SUCURSALES------------------------------->
+# <---------------------------SUCURSALES------------------------------->
+
 
 ### Crear sucursal
 POST http://localhost:4000/api/sucursales
@@ -10,12 +11,21 @@ GET http://localhost:4000/api/sucursales
 GET http://localhost:4000/api/sucursales/1
 
 
-# <-------------SOLICITUDES------------------------------>
+# <---------------------------SOLICITUDES------------------------------>
+
 
 ### Listar solicitudes
 GET http://localhost:4000/api/solicitudes
 
-# <-------------USUARIOS----------------------------------->
+
+# <---------------------------RELACIONDOS------------------------------>
+
+
+### Listar relaciondados
+GET http://localhost:4000/api/relacionados
+
+
+# <---------------------------USUARIOS----------------------------------->
 ### Listar usuarios
 POST http://localhost:4000/users/register
 Content-Type: application/json
@@ -29,3 +39,10 @@ Content-Type: application/json
 
 ### Listar usuario
 GET http://localhost:4000/users/register
+
+
+# <-------------SOLICITUDES POR SUCURSAL----------------------------------->
+
+
+### Listar solicitudes por sucursal.
+GET http://localhost:4000/api/solicitudes/sucursales/8

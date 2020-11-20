@@ -67,7 +67,7 @@ app.use(flash());
 
 app.use(compression());
 
-// API users routes.
+// ---------------------------> API users routes <---------------------------
 app.get("/", (req, res) => {
   res.render("index"); // main view -> /view/index.ejs
 });

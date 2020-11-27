@@ -5,7 +5,7 @@ import Sequelize from 'sequelize';
 //`postgres://process.env.DB_USER:process.env.DB_PASS@process.env.DB_HOST:process.env.DB_PORT/process.env.DB_DATABASE`
 
 export const sequelize = new Sequelize(
-  "postgres://postgres:Maxsteel2!@localhost:5432/banke", {
+  "postgres://postgres:postgres@localhost:5432/banke", {
      host:"localhost",
      dialect:'postgres',
      pool:{

@@ -1,6 +1,7 @@
 import express, { json, Router } from "express";
 import morgan from "morgan";
 import { pool } from './database/db_string';
+import { banke_odbc } from './database/db_informix';
 
 // Importing routes
 import sucursalRoutes from "./routes/adm/xadmsucm";
@@ -30,7 +31,6 @@ const initializePassport = require("./passportConfig");
 initializePassport(passport);
 
 // Middlewares
-
 
 app.use(function (req, res, next) {
 
